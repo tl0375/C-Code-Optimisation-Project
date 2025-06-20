@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+#SBATCH --time=00:10:00                 # Maximum time (HH:MM:SS)
+#SBATCH --ntasks=1                      # Number of tasks (1 task for this job)
+#SBATCH --output=simple_job_%j.log      # Standard output and error log
+#SBATCH --partition=gpu                 # Use the GPU queue
+#SBATCH --gres=gpu:1                    # Request 1 GPU
+#SBATCH --account=CS-TEACH-2024         # Use the CS-TEACH account
+#SBATCH --cpus-per-task=1               # Use 1 CPU per task
+#SBATCH --mem=16G                        # Memory per node
+#SBATCH --mail-type=END,FAIL            # Mail events (NONE, BEGIN, END, FAIL, ALL)
+#SBATCH --mail-user=tl1600@york.ac.uk   # Where to send mail
+
+# Unload any conflicting modules
+module purge
+module load make
+module load CUDA/11.0.2-GCC-9.3.0         # Load CUDA version compatible with GCC 9.3.0
+
+# Compile the code
+make clean
+make all
+
+# Run the program
+./lid-cavity 
