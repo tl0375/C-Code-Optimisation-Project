@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+#SBATCH --time=00:10:00                 # Maximum time (HH:MM:SS)
+#SBATCH --ntasks=1                    # run 20 tasks
+#SBATCH --output=simple_job_%j.log      # standard output and error log
+#SBATCH --partition=teach               # run in the teaching queue
+#SBATCH --account=CS-TEACH-2024         # use the CS-TEACH account
+#SBATCH --cpus-per-task=1               # use 1 CPU per task
+#SBATCH --mem=4G                      # Memory per node
+#SBATCH --mail-type=END,FAIL            # Mail events (NONE, BEGIN, END, FAIL, ALL)
+#SBATCH --mail-user=tl1600@york.ac.uk   # Where to send mail
+
+module purge
+module load GCC
+module load make
+
+make
+
+./lid-cavity
