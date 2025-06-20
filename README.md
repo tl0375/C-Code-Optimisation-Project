@@ -1,2 +1,4 @@
 # C-Code-Optimisation-Project
 Optimisation of C code for the lid cavity problem with OpenMP, MPI and CUDA.  
+
+Each optimisation method solves the lid cavity problem with the aim of speeding up execution time compared with the original. Each application has the parameters of: number of iterations (-n), and grid size (-x) which affect the size and depth the task is solved at. Each version has an implemented timer to track run time and outputs a VTK file which are used to validate the correctness of each optimisation solution. The Results.xlsx file shows the timings of execution of each function within the code for each implementation, with CPU efficiency and memory utilised also tracked. These results are compared across different runtime setups between each optimisation methods to compare performance. 
